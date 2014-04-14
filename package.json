@@ -1,6 +1,8 @@
 {
   "name": "Chapter-2",
   "version": "1.0.0",
+  "description": "",
+  "keywords": [],
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -15,5 +17,13 @@
   },
   "engines": {
     "node": ">=0.8.0"
-  }
+  },
+  "homepage": "https://github.com/packt-mg/Chapter-2/",
+  "bugs": "https://github.com/packt-mg/Chapter-2/issues/",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:packt-mg/Chapter-2.git"
+  },
+  "author": "Daniel Li (http://x711Li.com)",
+  "private": true
 }

@@ -1,13 +1,13 @@
 'use strict';
 
 module.exports = function (grunt) {
-  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-  var config = {};
+    var config = {};
 
-  grunt.initConfig(config);
+    grunt.initConfig(config);
 
-  var tasks = [];
+    var tasks = [];
 
-  grunt.registerTask('build', tasks);
+    grunt.registerTask('build', tasks);
 };
