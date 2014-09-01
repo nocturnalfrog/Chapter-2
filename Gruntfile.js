@@ -58,11 +58,85 @@ module.exports = function (grunt) {
         }
     };
 
+    config['clean'] = {
+        build: {
+            files: [{
+                dot: true,
+                src: [
+                    'dist/*',
+                    '!dist/.git*'
+                ]
+            }]
+        }
+    };
+
+
+    config['htmlmin'] = {
+        dist: {
+            options: {
+                collapseBooleanAttributes: true,
+                removeAttributeQuotes: true,
+                removeRedundantAttributes: true,
+                removeEmptyAttributes: true
+            },
+            files: [{
+                expand: true,
+                cwd: 'src',
+                src: '{,*/}*.html',
+                dest: 'dist'
+            }]
+        }
+    };
+
+    config['copy'] = {
+        dev: {
+            files: [{
+                expand: true,
+                dot: true,
+                cwd: 'src/bower_components/bootstrap-sass/dist',
+                dest: 'src',
+                src: [
+                    'fonts/{,*/}*.*'
+                ]
+            }]
+        },
+        dist: {
+            files: [{
+                expand: true,
+                dot: true,
+                cwd: 'src',
+                dest: 'dist',
+                src: [
+                    'images/{,*/}*.png'
+                ]
+            }]
+        }
+    };
+
+    config['cssmin'] = {
+        dist: {
+            files: {
+                'dist/styles/main.css': [
+                    'src/styles/{,*/}*.css'
+                ]
+            }
+        }
+    };
     grunt.initConfig(config);
 
-    var tasks = [
+    var devTasks = [
+        'copy:dev',
         'watch'
     ];
+    grunt.registerTask('dev', devTasks);
 
-    grunt.registerTask('build', tasks);
+    var buildTasks = [
+        'clean',
+        'jade:dist',
+        'compass:dist',
+        'htmlmin:dist',
+        'copy:dist',
+        'cssmin'
+    ];
+    grunt.registerTask('build', buildTasks);
 };
